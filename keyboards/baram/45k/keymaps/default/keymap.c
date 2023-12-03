@@ -23,3 +23,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LALT, KC_LGUI, KC_SPC,           KC_SPC,                    MO(2),   KC_LEFT, KC_DOWN, KC_RGHT
     )    
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) 
+{
+  if (record->event.pressed) 
+  {
+    char log_str[32];
+    snprintf(log_str, sizeof(log_str), "row:%d col:%d\n", record->event.key.row, record->event.key.col);
+    SEND_STRING(log_str);
+  }
+
+  return false;
+}
