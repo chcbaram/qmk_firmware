@@ -22,13 +22,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LCTL, KC_LGUI, KC_LALT, LT(1,KC_SPC),           KC_SPC,                    MO(4),   KC_LEFT, KC_DOWN, KC_RGHT
     ),
     [1] = LAYOUT(
-        KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, KC_EQL,
-        _______, _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, _______, KC_QUOT,
+        LSFT(KC_1), LSFT(KC_2), LSFT(KC_3), LSFT(KC_4), LSFT(KC_5), LSFT(KC_6), LSFT(KC_7), LSFT(KC_8), LSFT(KC_9), LSFT(KC_0), KC_MINS, KC_EQL,
+        _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, LSFT(KC_LBRC), LSFT(KC_LBRC), LSFT(KC_RBRC), LSFT(KC_BSLS), KC_QUOT,
         KC_LSFT, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SLSH, KC_LSFT,
         _______, _______, _______, _______,          KC_F18,                   MO(1)  , _______, _______, _______
     ),           
     [2] = LAYOUT(
-        KC_GRV, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+        KC_GRV, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, _______,
         _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         LM(2,MOD_LSFT), _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______,          KC_F18,                   MO(4), _______, _______, _______
