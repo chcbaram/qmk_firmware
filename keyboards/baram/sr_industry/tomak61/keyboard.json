@@ -18,7 +18,8 @@
         "bootmagic": true,
         "extrakey": true,
         "mousekey": true,
-        "nkro": true
+        "nkro": true,
+        "rgblight": true
     },
     "matrix_pins": {
         "cols": ["GP14", "GP15", "GP16", "GP17", "GP18", "GP19", "GP20", "GP21", "GP22"],
@@ -27,6 +28,22 @@
     "processor": "RP2040",
     "qmk": {
         "tap_keycode_delay": 10
+    },
+    "ws2812": {
+        "pin": "GP2",
+        "driver": "vendor"
+    },    
+    "rgblight": {
+        "led_count": 45,
+        "split": true,        
+        "split_count": [21, 24],    
+        "default": {
+          "on": false
+        },            
+        "animations": {
+          "rgb_test": true
+        },
+        "driver": "ws2812"
     },
     "split": {
         "bootmagic": {
