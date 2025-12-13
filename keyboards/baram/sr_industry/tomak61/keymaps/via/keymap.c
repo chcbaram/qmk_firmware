@@ -22,6 +22,10 @@ static bool  is_rgb_enable = false;
 
 
 
+void keyboard_pre_init_user(void) {
+    g_led_config.matrix_co[0][0] = 0;
+    g_led_config.matrix_co[0][1] = 1;
+}
 
 void bootmagic_scan(void) {
     matrix_scan();
