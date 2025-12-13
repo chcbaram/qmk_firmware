@@ -4,11 +4,9 @@
 #pragma once
 
 
-
 // Configure half duplex split comms over PIO
 #define SERIAL_PIO_USE_PIO1
-#define SERIAL_USART_TX_PIN GP28
-
+#define SERIAL_USART_TX_PIN GP0
 
 /* RP2040- and hardware-specific config */
 #define RP2040_BOOTLOADER_DOUBLE_TAP_RESET
