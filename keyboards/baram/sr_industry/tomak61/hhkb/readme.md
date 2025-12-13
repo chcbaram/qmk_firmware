@@ -1,4 +1,4 @@
-# TOMAK61
+# TOMAK61-HHKB
 
 The TOMAK61 is Split keyboard from SR Industry.
 
@@ -9,11 +9,11 @@ The TOMAK61 is Split keyboard from SR Industry.
 
 Make example for this keyboard (after setting up your build environment):
 
-    make baram/sr_industry/tomak61:default
+    make baram/sr_industry/tomak61/hhkb:via
     
 Flashing example for this keyboard:
 
-    make baram/sr_industry/tomak61:default:flash
+    make baram/sr_industry/tomak61/hhkb:via:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
