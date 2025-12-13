@@ -66,7 +66,8 @@ bool rgb_matrix_indicators_kb(void) {
   if (!rgb_matrix_indicators_user()) {
       return false;
   }
-  if (is_keyboard_master()) {     
+  if (is_keyboard_left()) 
+  {     
     if (host_keyboard_led_state().caps_lock) {
       rgb_matrix_set_color(0, 0, rgb_matrix_get_val(), 0);
     }
@@ -79,7 +80,8 @@ bool rgb_matrix_indicators_kb(void) {
 
 void indicator_update(void)
 {
-  if (is_keyboard_master()) {    
+  if (is_keyboard_left()) 
+  {    
     if (host_keyboard_led_state().caps_lock) {
       rgb_matrix_set_color(0, 0, rgb_matrix_get_val(), 0);
     }
