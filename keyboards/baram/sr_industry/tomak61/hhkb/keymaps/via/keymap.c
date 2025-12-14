@@ -23,19 +23,32 @@ static bool  is_rgb_enable = false;
 
 
 void keyboard_pre_init_user(void) {
-    g_led_config.matrix_co[0][0] = 0;
-    g_led_config.matrix_co[0][1] = 1;
 }
 
 void bootmagic_scan(void) {
-    matrix_scan();
-    wait_ms(DEBOUNCE * 2);
-    matrix_scan();
+  uint8_t row = BOOTMAGIC_ROW;
+  uint8_t col = BOOTMAGIC_COLUMN;
 
-    if (matrix_get_row(BOOTMAGIC_ROW) & (1 << BOOTMAGIC_COLUMN)) {
-      // Jump to bootloader.
-      bootloader_jump();
-    }
+  matrix_scan();
+  wait_ms(DEBOUNCE * 2);
+  matrix_scan();
+
+
+  if (!is_keyboard_left()) {
+      row = BOOTMAGIC_ROW_RIGHT;
+      col = BOOTMAGIC_COLUMN_RIGHT;
+  }    
+  
+  if (matrix_get_row(row) & (1 << col)) {
+    // Jump to bootloader.
+    bootloader_jump();
+  }
+
+  if (matrix_get_row(row) & (1 << (col+1))) {
+    eeconfig_disable();
+    // Jump to bootloader.
+    bootloader_jump();
+  }
 }
 
 void keyboard_post_init_user(void) {  
