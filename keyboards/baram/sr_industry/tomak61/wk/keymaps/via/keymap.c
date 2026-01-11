@@ -2,6 +2,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#include "port/via_led.h"
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -22,10 +24,12 @@ static bool  is_rgb_enable = false;
 
 
 
-void keyboard_pre_init_user(void) {
+void keyboard_pre_init_user(void) 
+{
 }
 
-void bootmagic_scan(void) {
+void bootmagic_scan(void) 
+{
   uint8_t row = BOOTMAGIC_ROW;
   uint8_t col = BOOTMAGIC_COLUMN;
 
@@ -51,11 +55,13 @@ void bootmagic_scan(void) {
   }
 }
 
-void keyboard_post_init_user(void) {  
+void keyboard_post_init_user(void) 
+{  
   is_rgb_enable = rgb_matrix_is_enabled();
 }
 
-void housekeeping_task_user(void) {
+void housekeeping_task_user(void) 
+{
   static uint8_t state = 0;
   static uint32_t pre_time;
 
@@ -79,14 +85,19 @@ void housekeeping_task_user(void) {
   }
 }
 
-bool rgb_matrix_indicators_kb(void) {
+bool rgb_matrix_indicators_kb(void) 
+{
   if (!rgb_matrix_indicators_user()) {
       return false;
   }
   if (is_keyboard_left()) 
-  {     
+  {
+    rgb_t rgb;
+    
+    via_led_get_rgb(LED_TYPE_CAPS, &rgb);
+
     if (host_keyboard_led_state().caps_lock) {
-      rgb_matrix_set_color(0, 0, rgb_matrix_get_val(), 0);
+      rgb_matrix_set_color(0, rgb.r, rgb.g, rgb.b);
     }
     else {
       rgb_matrix_set_color(0, 0, 0, 0);
@@ -99,8 +110,12 @@ void indicator_update(void)
 {
   if (is_keyboard_left()) 
   {    
+    rgb_t rgb;
+    
+    via_led_get_rgb(LED_TYPE_CAPS, &rgb);
+
     if (host_keyboard_led_state().caps_lock) {
-      rgb_matrix_set_color(0, 0, rgb_matrix_get_val(), 0);
+      rgb_matrix_set_color(0, rgb.r, rgb.g, rgb.b);
     }
     else {
       rgb_matrix_set_color(0, 0, 0, 0);
@@ -111,7 +126,31 @@ void indicator_update(void)
   }
 }
 
-bool led_update_kb(led_t led_state) {
+bool led_update_kb(led_t led_state) 
+{
   indicator_update();
   return true;
+}
+
+
+void eeconfig_init_user(void) 
+{
+  via_led_init();
+}
+
+void via_custom_value_command_kb(uint8_t *data, uint8_t length)
+{
+  // data = [ command_id, channel_id, value_id, value_data ]
+  uint8_t *command_id = &(data[0]);
+  uint8_t *channel_id = &(data[1]);
+
+
+  if (*channel_id == id_qmk_led_caps_channel)
+  {
+    via_qmk_led_command(0, data, length);
+    return;
+  }
+
+  // Return the unhandled state
+  *command_id = id_unhandled;
 }
