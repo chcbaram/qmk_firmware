@@ -30,9 +30,11 @@ void bootmagic_scan(void) {
 void keyboard_post_init_user(void) {
   gpio_set_pin_output(GP7);
   gpio_set_pin_output(GP10);
+  gpio_set_pin_output(GP12);
 
   gpio_write_pin(GP7, 0);
   gpio_write_pin(GP10, 0);
+  gpio_write_pin(GP12, 1);
 }
 
 bool led_update_kb(led_t led_state) {
@@ -40,6 +42,7 @@ bool led_update_kb(led_t led_state) {
   if(res) {
     gpio_write_pin(GP7, !led_state.caps_lock);
     gpio_write_pin(GP10, !led_state.caps_lock);
+    gpio_write_pin(GP12, led_state.caps_lock);
   }
   return res;
 }

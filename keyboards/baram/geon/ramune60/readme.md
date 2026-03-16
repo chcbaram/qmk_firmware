@@ -9,11 +9,11 @@ The RAMUNE60 is Split keyboard from GEON
 
 Make example for this keyboard (after setting up your build environment):
 
-    make baram/geon/ramune60:default
+    make baram/geon/ramune60:via
     
 Flashing example for this keyboard:
 
-    make baram/geon/ramune60:default:flash
+    make baram/geon/ramune60:via:flash
 
 See the [build environment setup](https://docs.qmk.fm/#/getting_started_build_tools) and the [make instructions](https://docs.qmk.fm/#/getting_started_make_guide) for more information. Brand new to QMK? Start with our [Complete Newbs Guide](https://docs.qmk.fm/#/newbs).
 
