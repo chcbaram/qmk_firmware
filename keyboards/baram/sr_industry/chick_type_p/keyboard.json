@@ -1,0 +1,112 @@
+{
+    "manufacturer": "SR Industry",
+    "keyboard_name": "CHICK TYPE P",
+    "maintainer": "BARAM",
+    "bootloader": "rp2040",
+    "bootmagic": {
+        "matrix": [0, 0]
+    },
+    "debounce": 10,
+    "build": {
+        "debounce_type": "sym_defer_pk"
+    },
+    "diode_direction": "ROW2COL",
+    "dynamic_keymap": {
+        "layer_count": 8
+    },
+    "features": {
+        "bootmagic": true,
+        "extrakey": true,
+        "mousekey": true,
+        "nkro": true,
+        "rgb_matrix": true
+    },
+    "matrix_pins": {
+        "cols": ["GP18", "GP22", "GP24"],
+        "rows": ["GP17", "GP29", "GP4", "GP5", "GP6"]
+    },
+    "processor": "RP2040",
+    "qmk": {
+        "tap_keycode_delay": 10
+    },
+    "ws2812": {
+        "pin": "GP7",
+        "driver": "vendor"
+    },    
+    "rgb_matrix": {
+        "animations": {            
+            "gradient_up_down": true,
+            "gradient_left_right": true,
+            "breathing": true,            
+            "band_val": true,            
+            "band_pinwheel_val": true,
+            "band_spiral_val": true,
+            "cycle_all": true,
+            "cycle_left_right": true,
+            "cycle_up_down": true,
+            "rainbow_moving_chevron": true,
+            "cycle_out_in": true,
+            "cycle_out_in_dual": true,
+            "cycle_pinwheel": true,
+            "cycle_spiral": true,
+            "rainbow_beacon": true,
+            "rainbow_pinwheels": true,
+            "pixel_flow": true
+        },
+        "default": {
+            "on": true,
+            "animation": "breathing"
+        },        
+        "driver": "ws2812",
+        "sleep": true,
+        "layout": [
+            {"flags": 2, "x": 10, "y": 10},
+            {"flags": 2, "x": 20, "y": 10},
+            {"flags": 2, "x": 30, "y": 10},
+            {"flags": 2, "x": 30, "y": 20},
+            {"flags": 2, "x": 20, "y": 20},
+            {"flags": 2, "x": 10, "y": 20},
+            {"flags": 2, "x": 10, "y": 30},
+            {"flags": 2, "x": 20, "y": 30},
+            {"flags": 2, "x": 30, "y": 30},
+            {"flags": 2, "x": 30, "y": 40},
+            {"flags": 2, "x": 20, "y": 40},
+            {"flags": 2, "x": 10, "y": 40},
+            {"flags": 2, "x": 10, "y": 50},
+            {"flags": 2, "x": 20, "y": 50},
+            {"flags": 2, "x": 30, "y": 50}
+        ],
+        "max_brightness": 255
+    },    
+    "url": "https://www.srind.kr",
+    "usb": {
+        "device_version": "0.0.1",
+        "vid": "0xBA02",        
+        "pid": "0x0008"
+    },
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {"matrix": [0, 0], "x": 0, "y": 0},
+                {"matrix": [0, 1], "x": 1, "y": 0},
+                {"matrix": [0, 2], "x": 2, "y": 0},
+
+                {"matrix": [1, 0], "x": 0, "y": 1},
+                {"matrix": [1, 1], "x": 1, "y": 1},
+                {"matrix": [1, 2], "x": 2, "y": 1},                
+                
+                {"matrix": [2, 0], "x": 0, "y": 2},
+                {"matrix": [2, 1], "x": 1, "y": 2},
+                {"matrix": [2, 2], "x": 2, "y": 2},
+
+                {"matrix": [3, 0], "x": 0, "y": 3},
+                {"matrix": [3, 1], "x": 1, "y": 3},
+                {"matrix": [3, 2], "x": 2, "y": 3},              
+
+                {"matrix": [4, 0], "x": 0, "y": 4},
+                {"matrix": [4, 1], "x": 1, "y": 4},
+                {"matrix": [4, 2], "x": 2, "y": 4}
+            ]
+        }
+    }
+}
